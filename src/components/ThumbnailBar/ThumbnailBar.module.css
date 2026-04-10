@@ -1,0 +1,68 @@
+.trigger {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 100;
+}
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  padding: 12px 24px;
+  overflow-x: auto;
+}
+
+.barVisible {
+  transform: translateY(0);
+}
+
+.inner {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  min-width: min-content;
+}
+
+.thumb {
+  width: 52px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.thumb:hover {
+  box-shadow: var(--shadow-raised);
+  background: var(--color-surface-raised);
+}
+
+.active {
+  box-shadow: var(--shadow-inset-sm);
+  background: var(--color-accent-subtle);
+}
+
+.active .thumbNumber {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.thumbNumber {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}

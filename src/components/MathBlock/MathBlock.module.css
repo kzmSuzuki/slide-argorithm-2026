@@ -1,0 +1,12 @@
+.block {
+  padding: 24px 32px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-inset);
+  border-radius: var(--radius-md);
+  text-align: center;
+  overflow-x: auto;
+}
+
+.inline {
+  display: inline;
+}

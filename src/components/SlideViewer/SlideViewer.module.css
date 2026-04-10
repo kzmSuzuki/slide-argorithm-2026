@@ -1,0 +1,53 @@
+.viewer {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.slideCounter {
+  position: fixed;
+  bottom: 12px;
+  right: 24px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.counterText {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised-sm);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.notFound {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--color-bg);
+  font-family: var(--font-sans);
+  color: var(--color-text-secondary);
+}
+
+.notFound button {
+  padding: 10px 24px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.notFound button:hover {
+  box-shadow: var(--shadow-inset);
+}

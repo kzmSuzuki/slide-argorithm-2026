@@ -1,0 +1,135 @@
+/* ── Base slide ── */
+.slide {
+  position: relative;
+  width: var(--slide-width);
+  height: var(--slide-height);
+  background: var(--color-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Decorative grid pattern ── */
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(91,122,157,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91,122,157,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Corner decoration ── */
+.cornerDecor {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,122,157,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── title variant ── */
+.title {
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-bg) 0%, #dde3ec 100%);
+}
+
+.titleCenter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 1400px;
+  padding: 80px 120px;
+}
+
+.mainTitle {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.subtitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+/* ── content / split / fullcode variants ── */
+.content,
+.split,
+.fullcode {
+  padding: 0;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 44px 80px 24px;
+  border-bottom: 1px solid rgba(91,122,157,0.1);
+  flex-shrink: 0;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  background: var(--color-accent-subtle);
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.heading {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 32px 80px 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── split variant: body becomes 2-column ── */
+.split .body {
+  flex-direction: row;
+  gap: 40px;
+}
+
+.split .body > * {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── fullcode: minimal header padding ── */
+.fullcode .header {
+  padding-bottom: 16px;
+}
+
+.fullcode .body {
+  padding-top: 20px;
+}
