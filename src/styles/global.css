@@ -18,6 +18,22 @@ html, body, #root {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* PrintPage 専用: スクロール・全高を有効にする */
+html:has(body.print-mode),
+body.print-mode,
+body.print-mode #root {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* 印刷時も同様 */
+@media print {
+  html, body, #root {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
 h1, h2, h3, h4 {
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
@@ -38,6 +54,8 @@ p {
 
 code, pre {
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
 }
 
 a {
@@ -86,4 +104,12 @@ li {
 ::selection {
   background: var(--color-accent-subtle);
   color: var(--color-accent-dark);
+}
+
+/* ── 通常の印刷（スライドビュー画面など）は抑制 ── */
+@media print {
+  /* PrintPage 以外では何も印刷しない */
+  body:not(.print-mode) {
+    display: none !important;
+  }
 }

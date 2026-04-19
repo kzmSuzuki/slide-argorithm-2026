@@ -38,13 +38,13 @@
   --font-sans: 'Noto Sans JP', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
 
-  --font-size-h1: 4.6rem;
-  --font-size-h2: 3.6rem;
-  --font-size-h3: 2.8rem;
-  --font-size-h4: 2.2rem;
-  --font-size-body: 1.9rem;
-  --font-size-small: 1.6rem;
-  --font-size-code: 1.6rem;
+  --font-size-h1: 5.4rem;
+  --font-size-h2: 4.2rem;
+  --font-size-h3: 3.25rem;
+  --font-size-h4: 2.55rem;
+  --font-size-body: 2.2rem;
+  --font-size-small: 1.85rem;
+  --font-size-code: 1.9rem;
 
   --font-weight-light: 300;
   --font-weight-regular: 400;

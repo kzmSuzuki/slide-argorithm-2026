@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SlideProvider, useSlideContext } from '../../context/SlideContext'
 import { useSlideNavigation } from '../../hooks/useSlideNavigation'
@@ -61,6 +61,18 @@ function SlideViewerInner() {
           {nav.currentSlide + 1} / {nav.totalSlides}
         </span>
       </div>
+
+      {/* PDF 出力ボタン */}
+      <Link
+        to={`/print/${lessonId}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.pdfBtn}
+        title="PDF で出力"
+        onClick={(e) => e.stopPropagation()}
+      >
+        PDF
+      </Link>
 
       <ThumbnailBar
         slides={slides}

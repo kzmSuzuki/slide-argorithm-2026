@@ -16,14 +16,14 @@
 
 .titleText {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
 }
 
 .lang {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--font-size-small);
   color: var(--color-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -31,7 +31,7 @@
 
 .pre {
   margin: 0;
-  padding: 20px 24px;
+  padding: 22px 26px;
   overflow-x: auto;
   background: transparent !important;
   box-shadow: none !important;

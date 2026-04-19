@@ -1,39 +1,55 @@
 import SlideLayout from '../../components/SlideLayout/SlideLayout'
-import InfoBox from '../../components/InfoBox/InfoBox'
 
-const cards = [
-  { notation: 'O(n)',     example: '総和',        desc: '1個増えたら1回増える',                     color: '#5b7a9d' },
-  { notation: 'O(n²)',    example: '重複チェック', desc: '1個増えたら他の全てとの計算 = n回増える',   color: '#8c6a5a' },
-  { notation: 'O(log n)', example: '二分探索',     desc: '半分ずつ絞り込む → 増え方が非常に緩やか',  color: '#4a8c6a' },
+const cases = [
+  {
+    title: 'ページランク',
+    desc: 'リンクが貼られているほど重要なページとして検索上位に来るアルゴリズム',
+    valuation: '500億円',
+    note: '使用権の代わりに大学に譲渡した株の売却価格より算出',
+    color: '#5b7a9d',
+  },
+  {
+    title: 'Sakana AI',
+    desc: '生物進化を模倣するアルゴリズムで高性能・低コストのAIを開発',
+    valuation: '1,600億円',
+    note: '企業価値',
+    color: '#4a8c6a',
+  },
 ]
 
 export default function Slide11() {
   return (
-    <SlideLayout title="O記法（ビッグオー記法）" lessonTag="01">
-      <InfoBox variant="definition" title="O記法とは">
-        <p style={{ fontSize: '1.9rem', lineHeight: 1.6 }}>
-          nが増えたらどれくらい計算量が大きくなるか、という「引数nの関数」として計算量を表す記法。<br />
-          具体的な計算時間は考えず、<strong>成長のオーダー</strong>だけを捉える。
-        </p>
-      </InfoBox>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginTop: '16px' }}>
-        {cards.map((item) => (
-          <div key={item.notation} style={{
-            padding: '24px',
+    <SlideLayout title="アルゴリズムとアントレプレナーシップ（回答）" lessonTag="01">
+      <p style={{ fontSize: '2.2rem', color: 'var(--color-text-secondary)', marginBottom: '20px' }}>
+        アルゴリズムで起業できる。
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        {cases.map((c) => (
+          <div key={c.title} style={{
             background: 'var(--color-surface)',
             boxShadow: 'var(--shadow-raised-sm)',
-            borderRadius: 'var(--radius-md)',
-            borderTop: `4px solid ${item.color}`,
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
           }}>
-            <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '3rem', color: item.color, marginBottom: '8px' }}>{item.notation}</div>
-            <div style={{ fontSize: '1.7rem', fontWeight: 600, color: 'var(--color-text-secondary)', marginBottom: '8px' }}>{item.example}</div>
-            <div style={{ fontSize: '1.6rem', color: 'var(--color-text-tertiary)', lineHeight: 1.5 }}>{item.desc}</div>
+            <div style={{ background: c.color, padding: '14px 24px' }}>
+              <h3 style={{ margin: 0, fontSize: '2.8rem', color: '#fff' }}>{c.title}</h3>
+            </div>
+            <div style={{ padding: '20px 24px' }}>
+              <p style={{ margin: '0 0 20px 0', fontSize: '1.9rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>{c.desc}</p>
+              <div style={{
+                padding: '14px 20px',
+                background: 'var(--color-surface-inset)',
+                borderRadius: 'var(--radius-md)',
+              }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '3.2rem', color: c.color }}>
+                  {c.valuation}
+                </div>
+                <div style={{ fontSize: '1.6rem', color: 'var(--color-text-tertiary)', marginTop: '4px' }}>{c.note}</div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-      <p style={{ marginTop: '14px', fontSize: '1.8rem', color: 'var(--color-text-tertiary)' }}>
-        悪いアルゴリズムを選択すると、数百・数千倍の計算時間がかかる。言葉通り「桁が違う」。
-      </p>
     </SlideLayout>
   )
 }

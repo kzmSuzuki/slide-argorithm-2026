@@ -1,0 +1,158 @@
+/* ── ページ設定（PDF/印刷） ── */
+@page {
+  /* width × height をそのまま指定 → Chrome の「PDFとして保存」で 1920×1080 になる */
+  size: 1920px 1080px;
+  margin: 0;
+}
+
+/* 画面表示用コントロール */
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-raised-sm);
+  font-family: var(--font-sans);
+}
+
+.controlsInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 32px;
+}
+
+.lessonTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.slideCount {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.printBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.printBtn:hover {
+  background: var(--color-accent-dark);
+}
+
+.backBtn {
+  padding: 10px 20px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised-sm);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.backBtn:hover {
+  color: var(--color-text-primary);
+}
+
+.loading {
+  padding: 4px 32px 8px;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* スライド一覧（画面表示用） */
+.slides {
+  padding-top: 60px;
+  background: #444;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* 画面上の1スライド枠（スケール後の高さをラッパーで吸収） */
+.pageWrapper {
+  /* JS で inline style に width/height（scale後サイズ）を設定 */
+  flex-shrink: 0;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.page {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  transform-origin: top left;
+  break-after: page;
+  page-break-after: always;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 16px;
+  font-family: var(--font-sans);
+  color: var(--color-text-secondary);
+}
+
+/* ── 印刷時 ── */
+@media print {
+  /* 背景色・グラデーション・box-shadow を忠実に印刷する */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .controls {
+    display: none !important;
+  }
+
+  .slides {
+    padding-top: 0 !important;
+    background: transparent !important;
+    display: block !important;
+  }
+
+  .pageWrapper {
+    width: 1920px !important;
+    height: 1080px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .page {
+    transform: none !important;
+    width: 1920px !important;
+    height: 1080px !important;
+  }
+}

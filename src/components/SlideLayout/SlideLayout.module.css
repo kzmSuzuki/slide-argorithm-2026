@@ -47,10 +47,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  gap: 24px;
-  max-width: 1400px;
-  padding: 80px 120px;
+  gap: 28px;
+  flex: 1;
+  min-height: 0;
+  max-width: 1480px;
+  padding: 72px 120px 88px;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
 }
 
 .mainTitle {
@@ -78,9 +85,9 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 20px;
-  padding: 44px 80px 24px;
+  padding: 40px 80px 22px;
   border-bottom: 1px solid rgba(91,122,157,0.1);
   flex-shrink: 0;
 }
@@ -97,21 +104,55 @@
 }
 
 .heading {
+  flex: 1;
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   line-height: var(--line-height-tight);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
 }
 
 .body {
   position: relative;
   z-index: 1;
   flex: 1;
+  min-height: 0;
   padding: 32px 80px 48px;
-  overflow: hidden;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+}
+
+.body > * {
+  min-width: 0;
+}
+
+.bodyCenter {
+  justify-content: center;
+}
+
+/* 本文内の引用：はみ出し・改行を抑える */
+.body blockquote {
+  max-width: min(1240px, 100%);
+  width: 100%;
+  box-sizing: border-box;
+  align-self: center;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
+}
+
+.body p {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
 }
 
 /* ── split variant: body becomes 2-column ── */

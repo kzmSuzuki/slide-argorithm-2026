@@ -1,45 +1,174 @@
 import SlideLayout from '../../components/SlideLayout/SlideLayout'
-import InfoBox from '../../components/InfoBox/InfoBox'
+import responsive from './imgs/responsve.png'
+
+const YT_CREATIVE =
+  'https://www.youtube.com/watch?v=-Rxm4Rnm4Qc'
+
+const items = [
+  {
+    title: 'レスポンシブデザイン',
+    desc: '各デバイスサイズで最適化するデザイン',
+    color: '#7a6b5a',
+    icon: '📱',
+    img: responsive,
+  },
+  {
+    title: 'クリエイティブコーディング',
+    desc: 'アルゴリズムを表現・造形・音楽・映像へ応用するデザイン手法',
+    color: '#8c4a6a',
+    icon: '🎨',
+    youtubeUrl: YT_CREATIVE,
+    youtubeVideoId: '-Rxm4Rnm4Qc',
+  },
+]
+
+const imagePlaceholderStyle = {
+  borderRadius: 'var(--radius-lg)',
+  background: 'var(--color-surface-inset)',
+  boxShadow: 'var(--shadow-inset-sm)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '12px',
+  color: 'var(--color-text-tertiary)',
+  fontSize: '2rem',
+  fontWeight: 700,
+  letterSpacing: '0.04em',
+  minHeight: 0,
+  height: '100%',
+}
 
 export default function Slide09() {
   return (
-    <SlideLayout title="アルゴリズムとプログラムの違い" lessonTag="01">
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px', marginTop: '8px' }}>
-        <div style={{
-          padding: '32px',
-          background: 'var(--color-surface)',
-          boxShadow: 'var(--shadow-raised-sm)',
-          borderRadius: 'var(--radius-lg)',
-          borderTop: '5px solid #5b7a9d',
-        }}>
-          <div style={{ fontSize: '4rem', marginBottom: '12px' }}>📐</div>
-          <h3 style={{ color: '#5b7a9d', margin: '0 0 12px 0', fontSize: '2.8rem' }}>アルゴリズム</h3>
-          <p style={{ color: 'var(--color-text-secondary)', fontSize: '2rem', lineHeight: 1.7, margin: 0 }}>
-            問題を解くための<strong>手順を定めたもの</strong>。<br />
-            言語に依存しない抽象的な概念。
-          </p>
+    <SlideLayout title="アルゴリズムとデザイン" lessonTag="01">
+      <div
+        style={{
+          flex: 1,
+          minHeight: 0,
+          display: 'grid',
+          gridTemplateRows: 'auto minmax(280px, 1fr)',
+          gap: '28px',
+        }}
+      >
+        {/* 上段：ラベル（テキスト）を横並び */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'stretch' }}>
+          {items.map((item) => (
+            <div
+              key={item.title}
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '24px',
+                padding: '32px 36px',
+                background: 'var(--color-surface)',
+                boxShadow: 'var(--shadow-raised-sm)',
+                borderRadius: 'var(--radius-lg)',
+                borderLeft: `6px solid ${item.color}`,
+              }}
+            >
+              <span style={{ fontSize: '4rem', lineHeight: 1, minWidth: '60px' }}>{item.icon}</span>
+              <div>
+                <h3 style={{ margin: '0 0 10px 0', fontSize: '2.6rem', color: item.color }}>{item.title}</h3>
+                <p style={{ margin: 0, fontSize: '2rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <div style={{
-          padding: '32px',
-          background: 'var(--color-surface)',
-          boxShadow: 'var(--shadow-raised-sm)',
-          borderRadius: 'var(--radius-lg)',
-          borderTop: '5px solid #4a8c6a',
-        }}>
-          <div style={{ fontSize: '4rem', marginBottom: '12px' }}>💻</div>
-          <h3 style={{ color: '#4a8c6a', margin: '0 0 12px 0', fontSize: '2.8rem' }}>プログラム</h3>
-          <p style={{ color: 'var(--color-text-secondary)', fontSize: '2rem', lineHeight: 1.7, margin: 0 }}>
-            アルゴリズムを計算機に載せるための<br />
-            <strong>表現方法の1つ</strong>。
-          </p>
+
+        {/* 下段：各列に大きめの画像（クリエイティブコーディングは YouTube サムネイル＋リンク） */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', minHeight: 0 }}>
+          {items.map((item) =>
+            item.youtubeVideoId ? (
+              <a
+                key={`${item.title}-image`}
+                href={item.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...imagePlaceholderStyle,
+                  padding: 0,
+                  overflow: 'hidden',
+                  position: 'relative',
+                  display: 'block',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  boxShadow: 'var(--shadow-raised-sm)',
+                }}
+                aria-label="YouTube で動画を開く（クリエイティブコーディング）"
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${item.youtubeVideoId}/hqdefault.jpg`}
+                  alt=""
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
+                  }}
+                />
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '88px',
+                    height: '88px',
+                    borderRadius: '50%',
+                    background: 'rgba(0,0,0,0.55)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '2.8rem',
+                    color: '#fff',
+                    pointerEvents: 'none',
+                  }}
+                  aria-hidden
+                >
+                  ▶
+                </span>
+              </a>
+            ) : item.img ? (
+              <div
+                key={`${item.title}-image`}
+                style={{
+                  minHeight: 0,
+                  height: '100%',
+                  borderRadius: 'var(--radius-lg)',
+                  background: '#FFFFFF',
+                  boxShadow: 'var(--shadow-raised-sm)',
+                  padding: '8px',
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            ) : (
+              <div key={`${item.title}-image`} style={imagePlaceholderStyle}>
+                <span style={{ fontSize: '4rem', opacity: 0.5 }}>🖼</span>
+                IMAGE PLACEHOLDER
+              </div>
+            ),
+          )}
         </div>
       </div>
-      <InfoBox variant="info" title="関係性">
-        <p style={{ fontSize: '1.8rem' }}>
-          アルゴリズム → 設計図&emsp;&emsp;プログラム → 実装<br />
-          同じアルゴリズムを Python / C / Java など異なる言語で書ける
-        </p>
-      </InfoBox>
     </SlideLayout>
   )
 }

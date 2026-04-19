@@ -51,3 +51,29 @@
 .notFound button:hover {
   box-shadow: var(--shadow-inset);
 }
+
+/* ── PDF ボタン ── */
+.pdfBtn {
+  position: fixed;
+  bottom: 12px;
+  left: 24px;
+  z-index: 101;
+  padding: 6px 16px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised-sm);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+  pointer-events: all;
+}
+
+.pdfBtn:hover {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: var(--shadow-raised);
+}

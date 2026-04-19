@@ -1,68 +1,94 @@
 import SlideLayout from '../../components/SlideLayout/SlideLayout'
+import graph from './imgs/graph.png'
+import llm from './imgs/llm.png'
 
-const cases = [
+const items = [
   {
-    label: '起業事例',
-    title: 'ページランク',
-    desc: 'リンクが貼られているほど重要なページとして検索上位に来るアルゴリズム',
-    valuation: '500億円',
-    note: '使用権の代わりに大学に譲渡した株の売却価格より算出',
+    title: '計算速度の向上',
+    example: '例：よりメモリが少なく計算できるようになる',
+    effect: '→ 大量に並列計算できる',
     color: '#5b7a9d',
+    image: graph,
   },
   {
-    label: '起業事例',
-    title: 'Sakana AI',
-    desc: '生物進化を模倣するアルゴリズムで高性能・低コストのAIを開発',
-    valuation: '1,600億円',
-    note: '企業価値',
+    title: '新たな価値創造',
+    example: '例：大規模言語モデル（ChatGPT）',
+    effect: '→ 新たな産業・サービスの誕生',
     color: '#4a8c6a',
+    image: llm,
   },
 ]
 
 export default function Slide08() {
   return (
-    <SlideLayout title="アルゴリズムで起業できる" lessonTag="01">
-      <p style={{ fontSize: '2rem', color: 'var(--color-text-secondary)', marginBottom: '20px' }}>
-        アルゴリズム ＝ 事業の核になりうる
-      </p>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        {cases.map((c) => (
-          <div key={c.title} style={{
-            background: 'var(--color-surface)',
-            boxShadow: 'var(--shadow-raised-sm)',
-            borderRadius: 'var(--radius-lg)',
-            overflow: 'hidden',
-          }}>
-            <div style={{
-              background: c.color,
-              padding: '10px 20px',
-              fontSize: '1.5rem',
-              fontWeight: 600,
-              color: '#fff',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}>{c.label}</div>
-            <div style={{ padding: '20px 24px' }}>
-              <h3 style={{ margin: '0 0 10px 0', fontSize: '2.8rem', color: 'var(--color-text-primary)' }}>{c.title}</h3>
-              <p style={{ margin: '0 0 16px 0', fontSize: '1.8rem', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>{c.desc}</p>
-              <div style={{
-                padding: '12px 18px',
-                background: 'var(--color-surface-inset)',
-                borderRadius: 'var(--radius-md)',
+    <SlideLayout title="アルゴリズムとテクノロジー" lessonTag="01">
+      {/* 列ごとに上：ラベル／下：画像（高さ 1:3 — ラベルは従来比で低く、画像を広く） */}
+      <div
+        style={{
+          flex: 1,
+          minHeight: 0,
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '24px',
+          alignItems: 'stretch',
+        }}
+      >
+        {items.map((item) => (
+          <div
+            key={item.title}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px',
+              minHeight: 0,
+            }}
+          >
+            <div
+              style={{
+                flex: '1 1 0',
+                minHeight: 0,
+                padding: '16px 24px',
+                background: 'var(--color-surface)',
+                boxShadow: 'var(--shadow-raised-sm)',
+                borderRadius: 'var(--radius-lg)',
+                borderLeft: `6px solid ${item.color}`,
+                overflow: 'auto',
+              }}
+            >
+              <h3 style={{ margin: '0 0 10px 0', fontSize: '2.6rem', color: item.color }}>{item.title}</h3>
+              <p style={{ margin: '0 0 6px 0', fontSize: '2rem', color: 'var(--color-text-secondary)' }}>{item.example}</p>
+              <p style={{ margin: 0, fontSize: '2rem', color: 'var(--color-text-primary)', fontWeight: 700 }}>{item.effect}</p>
+            </div>
+
+            <div
+              style={{
+                flex: '3 1 0',
+                minHeight: 0,
+                borderRadius: 'var(--radius-lg)',
+                background: '#FFFFFF',
+                boxShadow: 'var(--shadow-raised-sm)',
                 display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-              }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '3rem', color: c.color }}>{c.valuation}</span>
-                <span style={{ fontSize: '1.6rem', color: 'var(--color-text-tertiary)' }}>{c.note}</span>
-              </div>
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '8px',
+                boxSizing: 'border-box',
+              }}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  objectPosition: 'center',
+                  display: 'block',
+                }}
+              />
             </div>
           </div>
         ))}
       </div>
-      <p style={{ marginTop: '16px', fontSize: '1.8rem', color: 'var(--color-text-tertiary)' }}>
-        アルゴリズムそのものが、世界規模の価値を持ちうる
-      </p>
     </SlideLayout>
   )
 }

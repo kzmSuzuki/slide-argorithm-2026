@@ -6,7 +6,12 @@ export default function SlideLayout({
   subtitle,
   lessonTag,
   variant = 'content',
+  /** 本文を縦方向に中央寄せ（一行主役のスライド向け） */
+  bodyAlign = 'top',
 }) {
+  const bodyClass =
+    bodyAlign === 'center' ? `${styles.body} ${styles.bodyCenter}` : styles.body
+
   return (
     <div className={`${styles.slide} ${styles[variant]}`}>
       {/* Grid decorative pattern */}
@@ -25,7 +30,7 @@ export default function SlideLayout({
             {lessonTag && <span className={styles.tag}>{lessonTag}</span>}
             {title && <h2 className={styles.heading}>{title}</h2>}
           </header>
-          <div className={styles.body}>
+          <div className={bodyClass}>
             {children}
           </div>
         </>
