@@ -42,7 +42,7 @@ const themes = [
 export default function Slide02() {
   return (
     <section className="lesson02-slide" data-label="Course plan">
-      <div className="slide-eyebrow">04 / COURSE PLAN</div>
+      <div className="slide-eyebrow">03 / COURSE PLAN</div>
       <h1 className="slide-title">前期の授業設計</h1>
       <div
         className="slide-body-wrap"

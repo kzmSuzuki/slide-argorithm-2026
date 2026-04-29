@@ -6,8 +6,7 @@ const dps = [
     id: '①-1',
     label: '知識の活用',
     color: '#5b7a9d',
-    text: `エンジニアリングの基礎知識（アルゴリズム、データ構造、ネットワーク、データベース、セキュリティ、
-    ハードウェア等）を適切に理解し、これらを有機的に組み合わせて新たな価値を提案できる。`,
+    text: 'エンジニアリングの基礎知識（アルゴリズム、データ構造、ネットワーク、データベース、セキュリティ、ハードウェア等）を適切に理解し、これらを有機的に組み合わせて新たな価値を提案できる。',
   },
   {
     id: '④-2',
@@ -20,7 +19,7 @@ const dps = [
 export default function Slide03() {
   return (
     <section className="lesson02-slide" data-label="Related DP">
-      <div className="slide-eyebrow">03 / RELATED DP</div>
+      <div className="slide-eyebrow">04 / RELATED DP</div>
       <h1 className="slide-title">関連DP</h1>
       <div className="slide-body-wrap" style={{ marginTop: '48px', gap: '28px', justifyContent: 'center' }}>
         {dps.map((dp) => (

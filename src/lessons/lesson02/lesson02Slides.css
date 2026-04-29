@@ -39,6 +39,8 @@
 
 .cover-meta {
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 1.65rem;
   letter-spacing: 0.12em;
   color: var(--color-text-tertiary);
@@ -78,6 +80,8 @@
 
 .sc-num {
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 2rem;
   letter-spacing: 0.14em;
   color: var(--color-accent);
@@ -105,6 +109,8 @@
   z-index: 1;
   flex-shrink: 0;
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 1.75rem;
   letter-spacing: 0.1em;
   color: var(--color-accent);
@@ -164,6 +170,8 @@
   padding-top: 24px;
   border-top: 1px solid rgba(91, 122, 157, 0.12);
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 1.65rem;
   color: var(--color-text-tertiary);
 }
@@ -185,6 +193,14 @@
 
 .sf-right {
   letter-spacing: 0.06em;
+}
+
+/* section-cover はセクション padding が 0。padding だけだと border-top が全面幅のまま本文とずれるので、フッターごと margin でインセットする */
+.lesson02-slide.section-cover .slide-footer {
+  margin-left: 120px;
+  margin-right: 120px;
+  width: auto;
+  box-sizing: border-box;
 }
 
 /* ── Text utilities ── */
@@ -365,6 +381,8 @@
 .cc-en {
   font-size: 1.85rem;
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   color: var(--color-text-tertiary);
   margin-top: 12px;
   letter-spacing: 0.06em;
@@ -383,6 +401,8 @@
   padding: 24px 12px;
   font-size: 1.5rem;
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   color: var(--color-text-tertiary);
   line-height: 1.4;
   text-align: center;
@@ -472,6 +492,8 @@
   gap: 8px;
   margin-top: 16px;
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 22px;
   color: var(--color-text-tertiary);
   width: 100%;
@@ -494,6 +516,8 @@
   justify-content: center;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 1.75rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -545,6 +569,8 @@
   border-left: 1px solid rgba(91, 122, 157, 0.18);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   font-family: var(--font-mono);
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
   font-size: 1.4rem;
   color: var(--color-text-secondary);
   white-space: nowrap;

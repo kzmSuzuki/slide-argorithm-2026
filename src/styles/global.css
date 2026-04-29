@@ -58,6 +58,12 @@ code, pre {
   font-variant-ligatures: none;
 }
 
+/* インライン style で var(--font-mono) を指定したブロックもリガチャしない */
+[style*='--font-mono'] {
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
+}
+
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -111,5 +117,27 @@ li {
   /* PrintPage 以外では何も印刷しない */
   body:not(.print-mode) {
     display: none !important;
+  }
+
+  /*
+   * PDF 印刷時: ニューモーフィズムのシャドウ・CSS ぼかしを撤去してフラット化。
+   * Chrome の印刷パイプラインでのにじみ・レイヤー合成の崩れを抑える。
+   */
+  body.print-mode,
+  body.print-mode *,
+  body.print-mode *::before,
+  body.print-mode *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* シャドウ撤去後も塊として読めるよう細枠のみ追加 */
+  body.print-mode .neu-table {
+    border: 1px solid rgba(91, 122, 157, 0.3);
+    box-sizing: border-box;
   }
 }

@@ -87,6 +87,20 @@
   font-weight: 500;
 }
 
+.printHint {
+  padding: 0 32px 10px;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--color-text-tertiary);
+  max-width: 960px;
+}
+
+.printHint strong {
+  color: var(--color-text-secondary);
+  font-weight: 700;
+}
+
 /* スライド一覧（画面表示用） */
 .slides {
   padding-top: 60px;
@@ -127,7 +141,7 @@
 
 /* ── 印刷時 ── */
 @media print {
-  /* 背景色・グラデーション・box-shadow を忠実に印刷する */
+  /* 背景色・塗りをなるべくそのまま出す（シャドウは global.css でフラット化） */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;

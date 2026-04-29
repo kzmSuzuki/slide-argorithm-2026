@@ -32,13 +32,32 @@ export default function PrintPage() {
     return () => document.body.classList.remove('print-mode')
   }, [])
 
+  // フォント（本文・数式）の読み込み後に印刷 → 画面表示に近いレイアウトで PDF 化しやすい
   useEffect(() => {
     if (!lesson) return
-    const t = setTimeout(() => {
+    let cancelled = false
+    const schedulePrint = async () => {
+      try {
+        if (document.fonts?.ready) {
+          await document.fonts.ready
+        }
+      } catch {
+        /* ignore */
+      }
+      await new Promise((r) =>
+        requestAnimationFrame(() => requestAnimationFrame(r)),
+      )
+      await new Promise((r) => setTimeout(r, 500))
+      if (cancelled) return
       setReady(true)
-      window.print()
-    }, 800)
-    return () => clearTimeout(t)
+      setTimeout(() => {
+        if (!cancelled) window.print()
+      }, 100)
+    }
+    schedulePrint()
+    return () => {
+      cancelled = true
+    }
   }, [lesson])
 
   if (!lesson) {
@@ -74,6 +93,10 @@ export default function PrintPage() {
         {!ready && (
           <div className={styles.loading}>スライドを読み込んでいます…</div>
         )}
+        <p className={styles.printHint}>
+          PDF 保存時は <strong>余白なし</strong>・<strong>スケール 100%</strong>（「ページに収める」をオフ）を推奨。
+          印刷プレビューではニューモーフィズムの<strong>シャドウ・ぼかしを自動でオフ</strong>にし、フラット表示で崩れを抑えます。
+        </p>
       </div>
 
       {/* スライド一覧 */}
